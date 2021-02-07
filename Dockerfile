@@ -1,5 +1,7 @@
-FROM openjdk:11-jdk-alpine
+FROM adoptopenjdk/maven-openjdk11
+COPY . ./opt
+WORKDIR /opt
+RUN mvn clean install
 EXPOSE 8080
-ARG JAR_FILE=target/elibrary-back-*.jar
-ADD ${JAR_FILE} elibrary.jar
-ENTRYPOINT ["java","-jar","/elibrary.jar"]
+RUN mv target/elibrary-back-*.jar target/elibrary.jar
+ENTRYPOINT ["java","-jar","/opt/target/elibrary.jar"]

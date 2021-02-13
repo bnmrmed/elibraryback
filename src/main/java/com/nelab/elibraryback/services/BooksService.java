@@ -21,6 +21,13 @@ public class BooksService {
                 .year("1865")
                 .build());
         books.add(Book.builder()
+                .author("Allah")
+                .id("ISBN 00000000")
+                .title("Al9or2an Al kareem")
+                .type("The truth")
+                .year("-13")
+                .build());
+        books.add(Book.builder()
                 .author("George Orwell")
                 .id("ISBN 0547249640")
                 .title("1983")

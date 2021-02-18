@@ -53,8 +53,6 @@ Configure Jenkins to run the new dockerized train-schedule pipeline.
 Successfully deploy the train-schedule app to production as a Docker container using the Jenkins Pipeline.
 Modify the Jenkinsfile in GitHub to build and push the Docker image to Docker Hub, and commit the changes.
 
-pipeline {
-    agent any
     stages {
         stage('Build') {
             steps {
@@ -90,13 +88,15 @@ pipeline {
              }
          }
      }   
- } 
 
 
  In Jenkins, click Build Now. Note: The initial build may take several minutes to complete.  
  In Docker Hub, under Repositories, select the train-schedule app. 
  Click the Tags tab to verify that the build was pushed successfully. 
- In GitHub, modify the Jenkinsfile to include a stage that pushes the build to the production server, and commit the changes. stage ('DeployToProduction') {
+ In GitHub, modify the Jenkinsfile to include a stage that pushes the build to the production server, and commit the changes. 
+ 
+ 
+ stage ('DeployToProduction') {
      when {
          branch 'master'
      }
@@ -116,7 +116,7 @@ pipeline {
              }
          }
      }
- } 
+     
  In Jenkins, click Build Now. 
  Once the build is complete, using a web browser, verify that the application has been deployed successfully. <PRODUCTION_SERVER_PUBLIC_IP_ADDRESS>:8080 
 Conclusion
